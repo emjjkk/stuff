@@ -255,12 +255,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (menuToggle && menuClose && mobileMenu) {
-    const closeMenu = () => mobileMenu.classList.add('translate-x-full');
-    const openMenu = () => mobileMenu.classList.remove('translate-x-full');
+    const closeMenu = () => {
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.focus();
+    };
+
+    const openMenu = () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      const firstLink = mobileMenu.querySelector('a');
+      if (firstLink) {
+        firstLink.focus();
+      }
+    };
 
     menuToggle.addEventListener('click', openMenu);
     menuClose.addEventListener('click', closeMenu);
     mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        closeMenu();
+      }
+    });
   }
 
   if (window.matchMedia('(pointer: fine)').matches && customCursor && cursorDot && cursorRing) {

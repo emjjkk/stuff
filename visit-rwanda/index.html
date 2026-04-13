@@ -32,6 +32,8 @@
 </head>
 <body class="bg-rw-paper font-body text-rw-ink overflow-x-hidden">
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- SVG Grain Filter -->
   <svg class="hidden" aria-hidden="true">
     <defs>
@@ -66,7 +68,7 @@
       </div>
       <div class="intro-line-wrapper mt-1 md:mt-2">
         <p class="font-hand text-4xl md:text-6xl lg:text-8xl text-rw-ink handwriting-2">
-          Kigali, Rwanda.
+          Rwanda.
         </p>
       </div>
       <div class="ink-splatter" aria-hidden="true"></div>
@@ -77,7 +79,7 @@
   </div>
 
   <!-- ===== NAVIGATION ===== -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-700 opacity-0 pointer-events-none">
+  <nav id="navbar" aria-label="Primary navigation" class="fixed top-0 left-0 right-0 z-40 transition-all duration-700 opacity-0 pointer-events-none">
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6 flex items-center justify-between">
       <a href="#" class="font-display text-lg md:text-xl font-bold tracking-tight nav-logo-text transition-colors duration-500">
         Visit Rwanda
@@ -91,16 +93,16 @@
           Plan Visit
         </a>
       </div>
-      <button id="menu-toggle" class="md:hidden nav-link transition-colors duration-300">
-        <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="menu-toggle" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden nav-link transition-colors duration-300">
+        <i data-lucide="menu" aria-hidden="true" class="w-6 h-6"></i>
       </button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-[45] bg-rw-green flex items-center justify-center transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden">
-    <button id="menu-close" class="absolute top-5 right-6 text-white/70 hover:text-white transition-colors">
-      <i data-lucide="x" class="w-7 h-7"></i>
+  <div id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true" class="fixed inset-0 z-[45] bg-rw-green flex items-center justify-center transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden">
+    <button id="menu-close" aria-label="Close navigation menu" class="absolute top-5 right-6 text-white/70 hover:text-white transition-colors">
+      <i data-lucide="x" aria-hidden="true" class="w-7 h-7"></i>
     </button>
     <div class="text-center space-y-8">
       <a href="#hills" class="mobile-nav-link block text-3xl font-display text-white/70 hover:text-white transition-colors">Discover</a>
@@ -112,7 +114,7 @@
   </div>
 
   <!-- ===== MAIN CONTENT ===== -->
-  <main id="main-content" class="opacity-0">
+  <main id="main-content" tabindex="-1" class="opacity-0">
 
     <!-- HERO SECTION -->
     <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
@@ -123,9 +125,6 @@
       <div class="relative z-10 text-center px-6 max-w-5xl">
         <p class="text-rw-gold tracking-[0.35em] text-[10px] md:text-xs uppercase mb-6 hero-fade opacity-0" style="animation-delay: 0.3s;">
           Welcome to the heart of Africa
-        </p>
-        <p class="font-display text-xl md:text-2xl text-white/90 italic hero-fade opacity-0" style="animation-delay: 0.4s;">
-          Discover Rwanda
         </p>
         <h1 class="font-display text-[3.5rem] md:text-[7rem] lg:text-[10rem] font-bold text-white tracking-tight leading-[0.85] hero-fade opacity-0" style="animation-delay: 0.5s;">
           RWANDA
@@ -396,42 +395,38 @@
           </h2>
           <div class="w-12 h-px bg-rw-gold mx-auto mt-7 mb-7"></div>
           <p class="text-rw-ink/60 text-base md:text-lg leading-relaxed">
-            Hover each destination to reveal stories, notes, and moments waiting across Rwanda.
+            Explore Rwanda directly on Google Maps and zoom into key destinations across the country.
           </p>
         </div>
 
         <div class="map-shell reveal-up" style="transition-delay: 0.15s;">
-          <svg class="rwanda-map" viewBox="0 0 420 560" role="img" aria-label="Stylized map of Rwanda with destinations">
-            <path class="map-outline" d="M216 20C188 34 170 54 153 80c-22 34-34 67-34 103 0 34 11 64 8 95-2 21-18 37-29 56-9 15-13 32-11 50 4 34 30 61 47 90 19 31 26 69 57 91 33 24 80 17 115-4 34-21 62-52 76-89 10-28 12-57 20-85 11-36 29-72 31-110 2-43-17-84-38-121-18-31-35-66-63-89-31-26-75-34-113-17Z" />
-            <path class="map-river" d="M280 102c-14 37-23 77-33 116-11 43-24 86-28 130-4 49 0 99 11 146" />
-
-            <g class="map-pin" data-place="Kigali" data-note="Creative capital, clean boulevards, coffee at dawn" style="--x: 232px; --y: 238px;">
-              <circle cx="232" cy="238" r="6"></circle>
-              <text x="248" y="242">Kigali</text>
-            </g>
-            <g class="map-pin" data-place="Volcanoes National Park" data-note="Misty trails and mountain gorilla encounters" style="--x: 154px; --y: 118px;">
-              <circle cx="154" cy="118" r="6"></circle>
-              <text x="170" y="122">Volcanoes NP</text>
-            </g>
-            <g class="map-pin" data-place="Lake Kivu" data-note="Lakeside sunsets and calm blue mornings" style="--x: 122px; --y: 245px;">
-              <circle cx="122" cy="245" r="6"></circle>
-              <text x="38" y="239">Lake Kivu</text>
-            </g>
-            <g class="map-pin" data-place="Nyungwe Forest" data-note="Canopy walks and ancient rainforest echoes" style="--x: 160px; --y: 412px;">
-              <circle cx="160" cy="412" r="6"></circle>
-              <text x="176" y="416">Nyungwe</text>
-            </g>
-            <g class="map-pin" data-place="Akagera National Park" data-note="Savannah wildlife and golden-hour game drives" style="--x: 312px; --y: 270px;">
-              <circle cx="312" cy="270" r="6"></circle>
-              <text x="190" y="288">Akagera NP</text>
-            </g>
-          </svg>
-
-          <div class="map-note" id="map-note">
-            <p class="map-note-label">Field Note</p>
-            <p class="font-display text-xl text-rw-ink mt-2" id="map-place">Kigali</p>
-            <p class="text-rw-ink/60 mt-2 leading-relaxed" id="map-text">Creative capital, clean boulevards, coffee at dawn</p>
+          <div class="overflow-hidden rounded-sm border border-rw-ink/10 min-h-[520px]">
+            <iframe
+              title="Google Map of Rwanda"
+              src="https://www.google.com/maps?q=Rwanda&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
           </div>
+
+          <aside class="map-note">
+            <p class="map-note-label">Suggested Route</p>
+            <h3 class="font-display text-2xl text-rw-ink mt-2">Start in Kigali</h3>
+            <p class="text-rw-ink/60 mt-2 leading-relaxed">
+              Use this map to zoom into key regions, then open a destination directly in Google Maps.
+            </p>
+            <div class="mt-6 space-y-3 text-sm">
+              <a href="https://www.google.com/maps?q=Kigali" target="_blank" rel="noopener noreferrer" class="block border-b border-rw-ink/10 pb-2 text-rw-ink/80 hover:text-rw-green transition-colors">Kigali - coffee, galleries, city stays</a>
+              <a href="https://www.google.com/maps?q=Volcanoes+National+Park+Rwanda" target="_blank" rel="noopener noreferrer" class="block border-b border-rw-ink/10 pb-2 text-rw-ink/80 hover:text-rw-green transition-colors">Volcanoes National Park - gorilla trekking</a>
+              <a href="https://www.google.com/maps?q=Lake+Kivu+Rwanda" target="_blank" rel="noopener noreferrer" class="block border-b border-rw-ink/10 pb-2 text-rw-ink/80 hover:text-rw-green transition-colors">Lake Kivu - lakeside relaxation</a>
+              <a href="https://www.google.com/maps?q=Nyungwe+National+Park+Rwanda" target="_blank" rel="noopener noreferrer" class="block border-b border-rw-ink/10 pb-2 text-rw-ink/80 hover:text-rw-green transition-colors">Nyungwe - canopy walks and rainforest trails</a>
+              <a href="https://www.google.com/maps?q=Akagera+National+Park+Rwanda" target="_blank" rel="noopener noreferrer" class="block text-rw-ink/80 hover:text-rw-green transition-colors">Akagera - savannah safari loop</a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -523,14 +518,14 @@
         <div>
           <p class="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-4">Connect</p>
           <div class="flex gap-4">
-            <a href="#" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-            <a href="#" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-            <a href="#" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+            <a href="#" aria-label="Instagram" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="instagram" aria-hidden="true" class="w-5 h-5"></i></a>
+            <a href="#" aria-label="Twitter" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="twitter" aria-hidden="true" class="w-5 h-5"></i></a>
+            <a href="#" aria-label="YouTube" class="text-white/30 hover:text-rw-gold transition-colors duration-300"><i data-lucide="youtube" aria-hidden="true" class="w-5 h-5"></i></a>
           </div>
         </div>
       </div>
       <div class="border-t border-white/[0.06] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-white/20 text-xs">© 2024 Rwanda Development Board. All rights reserved.</p>
+        <p class="text-white/20 text-xs">© 2024 emjjkk.tech - All rights reserved.</p>
         <p class="font-hand text-rw-gold/40 text-sm">made with love from Kigali ✦</p>
       </div>
     </div>
