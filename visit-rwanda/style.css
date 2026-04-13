@@ -1,0 +1,542 @@
+/* ========================================
+   VISIT RWANDA — Custom Styles
+   ======================================== */
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #c9a84c;
+  color: #1a1a1a;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Grain Overlay ---------- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  width: 300%;
+  height: 300%;
+  background: #f5f0e8;
+  filter: url(#grain-filter);
+}
+
+/* ---------- Custom Cursor ---------- */
+.custom-cursor {
+  display: none;
+}
+
+@media (pointer: fine) {
+  .custom-cursor {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #c9a84c;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+  }
+
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(201, 168, 76, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                height 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.3s,
+                background 0.3s;
+  }
+
+  .custom-cursor.hovering .cursor-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-cursor.hovering .cursor-ring {
+    width: 56px;
+    height: 56px;
+    border-color: rgba(201, 168, 76, 0.3);
+    background: rgba(201, 168, 76, 0.05);
+  }
+
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ---------- Intro ---------- */
+.intro-bg {
+  background-color: #f5f0e8;
+  background-image:
+    radial-gradient(ellipse at 30% 40%, rgba(196, 149, 106, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(26, 60, 52, 0.04) 0%, transparent 60%);
+}
+
+.intro-line-wrapper {
+  overflow: hidden;
+}
+
+.handwriting-1 {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: writeText 2s cubic-bezier(0.23, 1, 0.32, 1) 0.6s forwards,
+             fadeInText 0.3s ease 0.6s forwards;
+}
+
+.handwriting-2 {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: writeText 2.2s cubic-bezier(0.23, 1, 0.32, 1) 1.8s forwards,
+             fadeInText 0.3s ease 1.8s forwards;
+}
+
+@keyframes writeText {
+  to {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
+.ink-splatter {
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  width: 8px;
+  height: 8px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  opacity: 0;
+  animation: splatter 0.3s ease 3.8s forwards;
+}
+
+@keyframes splatter {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 0.15; transform: scale(1.5); }
+  100% { opacity: 0.08; transform: scale(1); }
+}
+
+/* Intro exit */
+#intro.fade-out #intro-content {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ---------- Hero Animations ---------- */
+.hero-fade {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.hero-fade.animate {
+  animation: heroFadeIn 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-img {
+  transition: transform 8s ease-out;
+}
+
+.hero-img.zoomed {
+  transform: scale(1);
+}
+
+/* Scroll Down Animation */
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scroll-down {
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+/* ---------- Navigation ---------- */
+#navbar.scrolled {
+  background: rgba(26, 60, 52, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.nav-logo-text {
+  color: white;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#navbar.at-top .nav-logo-text {
+  color: white;
+}
+
+#navbar.at-top .nav-link {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#navbar.scrolled .nav-logo-text {
+  color: white;
+}
+
+#navbar.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.nav-cta-btn {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* ---------- Scroll Reveal ---------- */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Journal Cards ---------- */
+.journal-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.journal-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Parallax ---------- */
+.parallax-container {
+  overflow: hidden;
+}
+
+.parallax-img {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ---------- Magnetic Button ---------- */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              background-color 0.5s,
+              color 0.5s,
+              border-color 0.5s;
+}
+
+/* ---------- Counter Animation ---------- */
+.counter {
+  display: inline-block;
+}
+
+/* ---------- Decorative Elements ---------- */
+.img-reveal {
+  transform: scale(1.08);
+  transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ---------- Strip Animation ---------- */
+.reveal-strip {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 45;
+  background-color: #f5f0e8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+  transform: translateY(0);
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.reveal-strip.animate {
+  transform: translateY(-120%);
+}
+
+/* ---------- Scroll Annotations ---------- */
+.annotation-anchor {
+  position: relative;
+}
+
+.scroll-annotation {
+  position: absolute;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(14px) rotate(-3deg);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.annotation-anchor.annotated .scroll-annotation {
+  opacity: 0.65;
+  transform: translateY(0) rotate(-1deg);
+}
+
+.scroll-annotation svg {
+  width: 110px;
+  height: 40px;
+}
+
+.scroll-annotation path {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.62);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLine 1.4s ease forwards;
+}
+
+.scroll-annotation span {
+  display: block;
+  margin-top: -7px;
+  margin-left: 10px;
+  font-family: 'Caveat', cursive;
+  color: rgba(201, 168, 76, 0.88);
+  font-size: 1.2rem;
+}
+
+.scroll-annotation.circle span {
+  margin-top: -30px;
+  margin-left: 48px;
+}
+
+.scroll-annotation.underline span {
+  margin-top: -14px;
+  margin-left: 20px;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Interactive Map ---------- */
+.map-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  padding: 1.8rem;
+  border: 1px solid rgba(26, 60, 52, 0.08);
+  background:
+    linear-gradient(140deg, rgba(196, 149, 106, 0.08), rgba(26, 60, 52, 0.04)),
+    #efe6d5;
+  box-shadow: 0 18px 46px rgba(26, 26, 26, 0.08);
+}
+
+.rwanda-map {
+  width: 100%;
+  max-width: 480px;
+  justify-self: center;
+}
+
+.map-outline {
+  fill: rgba(26, 60, 52, 0.08);
+  stroke: rgba(26, 60, 52, 0.7);
+  stroke-width: 2;
+}
+
+.map-river {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.6);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+}
+
+.map-pin {
+  cursor: pointer;
+}
+
+.map-pin circle {
+  fill: #c9a84c;
+  stroke: #1a3c34;
+  stroke-width: 2;
+  transition: transform 0.3s ease, fill 0.3s ease;
+  transform-origin: center;
+}
+
+.map-pin text {
+  fill: rgba(26, 26, 26, 0.85);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.map-pin:hover circle,
+.map-pin.active circle {
+  transform: scale(1.35);
+  fill: #d4b96a;
+}
+
+.map-note {
+  align-self: center;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(26, 60, 52, 0.11);
+  padding: 1.5rem;
+  min-height: 170px;
+}
+
+.map-note-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.52);
+}
+
+/* ---------- Highlights ---------- */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.highlight-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1), filter 0.9s ease;
+}
+
+.highlight-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.12));
+  transform: translateY(10px);
+  transition: transform 0.5s ease;
+}
+
+.highlight-card:hover img {
+  transform: scale(1.1);
+  filter: saturate(1.1);
+}
+
+.highlight-card:hover .highlight-overlay {
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .map-shell {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    min-height: 340px;
+  }
+
+  .handwriting-1 {
+    animation: writeText 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.4s forwards,
+               fadeInText 0.3s ease 0.4s forwards;
+  }
+
+  .handwriting-2 {
+    animation: writeText 1.8s cubic-bezier(0.23, 1, 0.32, 1) 1.4s forwards,
+               fadeInText 0.3s ease 1.4s forwards;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .handwriting-1, .handwriting-2 {
+    clip-path: none;
+    opacity: 1;
+  }
+
+  .hero-fade {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+  }
+
+  .journal-card {
+    opacity: 1;
+    transform: none;
+  }
+}
