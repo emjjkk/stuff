@@ -33,15 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let countersStarted = false;
 
   function createRevealStrips() {
-    const stripCount = 7;
-    const height = Math.ceil(window.innerHeight / stripCount);
+    const stripCount = 10;
+    const width = Math.ceil(window.innerWidth / stripCount);
     const strips = [];
 
     for (let i = 0; i < stripCount; i += 1) {
       const strip = document.createElement('div');
       strip.className = 'reveal-strip';
-      strip.style.top = `${i * height}px`;
-      strip.style.height = `${height + 2}px`;
+      strip.style.left = `${i * width}px`;
+      strip.style.width = `${width + 2}px`;
       strip.style.transitionDelay = `${i * 90}ms`;
       document.body.appendChild(strip);
       strips.push(strip);

@@ -300,8 +300,8 @@ body {
 /* ---------- Strip Animation ---------- */
 .reveal-strip {
   position: fixed;
-  left: 0;
-  width: 100%;
+  top: 0;
+  height: 100vh;
   z-index: 45;
   background-color: #f5f0e8;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
